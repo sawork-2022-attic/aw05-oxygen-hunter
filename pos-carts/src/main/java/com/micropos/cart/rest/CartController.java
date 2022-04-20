@@ -39,4 +39,9 @@ public class CartController implements CartApi {
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<Void> removeItem(String productId) {
+        cartService.removeItem(productId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
