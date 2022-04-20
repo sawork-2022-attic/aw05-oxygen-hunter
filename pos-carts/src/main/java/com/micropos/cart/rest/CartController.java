@@ -3,6 +3,7 @@ package com.micropos.cart.rest;
 import com.micropos.cart.dto.ItemDto;
 import com.micropos.cart.api.CartApi;
 import com.micropos.cart.mapper.CartMapper;
+import com.micropos.cart.model.Item;
 import com.micropos.cart.service.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,15 @@ public class CartController implements CartApi {
 
     @Override
     public ResponseEntity<List<ItemDto>> listCart() {
-        List<ItemDto> items = new ArrayList<>((cartMapper.toItemsDto(this.cartService.items())));
+        List<ItemDto> items = new ArrayList<>((cartMapper.toItemsDto(cartService.items())));
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<List<ItemDto>> addItem(ItemDto itemDto) {
+        Item item = cartMapper.toItem(itemDto);
+        List<ItemDto> items = new ArrayList<>(cartMapper.toItemsDto(cartService.addItem(item)));
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
 }

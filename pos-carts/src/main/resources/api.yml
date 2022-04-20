@@ -68,14 +68,28 @@ paths:
         - cart
 components:
   schemas:
-    Item:
+    Product:
       type: object
       required:
         - id
-        - quantity
+        - name
       properties:
         id:
           type: string
+        name:
+          type: string
+        price:
+          type: double
+        image:
+          type: string
+    Item:
+      type: object
+      required:
+        - product
+        - quantity
+      properties:
+        product:
+          $ref: '#/components/schemas/Product'
         quantity:
           type: integer
           format: int32
