@@ -1,0 +1,12 @@
+<ehcache:config
+        xmlns:ehcache="http://www.ehcache.org/v3">
+    <ehcache:cache alias="products">
+        <ehcache:expiry>
+            <ehcache:ttl unit="seconds">30</ehcache:ttl>
+        </ehcache:expiry>
+        <ehcache:resources>
+            <ehcache:heap unit="entries">2</ehcache:heap>
+            <ehcache:offheap unit="MB">20</ehcache:offheap>
+        </ehcache:resources>
+    </ehcache:cache>
+</ehcache:config>
