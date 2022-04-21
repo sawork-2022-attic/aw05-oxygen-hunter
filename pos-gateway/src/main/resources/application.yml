@@ -9,13 +9,13 @@ spring:
         - id: cart-service
           uri: lb://cart-service
           predicates:
-            - Path=/api/products/**
+            - Path=/cart/**
           filters:
-            - StripPrefix=2
-        - id: products-service
-          uri: lb://products-service
+            - StripPrefix=1
+        - id: product-service
+          uri: lb://product-service
           predicates:
-            - Path=/products/**
+            - Path=/product/**
           filters:
             - StripPrefix=1
 eureka:
