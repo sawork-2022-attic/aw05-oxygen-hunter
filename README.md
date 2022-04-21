@@ -11,4 +11,22 @@
 
 ## pos-discovery
 
-a eureka discovery server
+a eureka discovery server, running on localhost:8761
+
+## pos-products
+
+product server, running on localhost:8081
+
+use ehcache on `JDRepository.allProducts`
+
+## pos-cart
+
+cart server, running on localhost:8083
+
+use circuitbreaker on `CartServiceImple.getProduct`: when getting product list from product server failed, return a pre-prepared product list
+
+## pos-gateway
+
+gateway, running on localhost:8080
+
+route for product service and cart service
